@@ -31,13 +31,14 @@ jobs:
 
     - name: Build
       working-directory: collector
-      run: make build
+      run: make package
       
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: collector
+        files: |
+          **/collector-extension.zip
 
 #     - name: Upload a Build Artifact
 #       uses: actions/upload-artifact@v3.1.2
